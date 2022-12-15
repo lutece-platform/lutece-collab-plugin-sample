@@ -1,0 +1,54 @@
+<#include "managesample_tabs.html" />
+<@tabs2 tab="project" />
+
+<@box>
+	<@boxHeader title='#i18n{module.plugin.sample.manage_project.title}' boxTools=true>
+		<@tform class='form-inline pull-right' name='manage_project' action='jsp/admin/plugins/plugin/modules/sample/ManageProjects.jsp'>
+			<@button type='submit' name='view_createProject' buttonIcon='plus' title='#i18n{module.plugin.sample.manage_projects.buttonAdd}' />
+		</@tform>
+	</@boxHeader>
+	<@boxBody>    
+    <@messages infos=infos />
+    <@paginationAdmin paginator=paginator combo=1 />
+    <div class="clearfix"></div>
+    <@table>
+        <tr>
+            <th>#i18n{module.plugin.sample.manage_projects.columnTitle}</th>
+            <th>#i18n{module.plugin.sample.manage_projects.columnDescription}</th>
+            <th>#i18n{module.plugin.sample.manage_projects.columnRangeOfPublicationDate}</th>
+            <th>#i18n{module.plugin.sample.manage_projects.columnDate}</th>
+            <th>#i18n{module.plugin.sample.manage_projects.columnChoice}</th>
+            <th>#i18n{portal.util.labelActions}</th>
+        </tr>
+        <@tableHeadBodySeparator />
+        <#list project_list as project >
+        <tr>
+            <td>
+				${project.title}
+			</td>
+            <td>
+				${project.description}
+			</td>
+            <td>
+				${project.rangeOfPublicationDate}
+			</td>
+            <td>
+				${project.date}
+			</td>
+            <td>
+				${project.choice}
+			</td>
+        	<td>
+				<@aButton href='jsp/admin/plugins/plugin/modules/sample/ManageProjects.jsp?view=modifyProject&id=${project.id}' title='#i18n{portal.util.labelModify}' hideTitle=['all'] buttonIcon='pencil' />
+						
+				<@aButton href='jsp/admin/plugins/plugin/modules/sample/ManageProjects.jsp?action=confirmRemoveProject&id=${project.id}' title='#i18n{portal.util.labelDelete}' buttonIcon='trash' hideTitle=['all'] color='btn-danger'  />
+
+	        </td>
+        </tr>
+        </#list>
+    </@table>
+
+    <@paginationAdmin paginator=paginator />
+
+  </@boxBody>
+</@box>

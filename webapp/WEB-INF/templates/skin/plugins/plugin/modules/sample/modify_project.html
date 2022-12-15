@@ -1,0 +1,36 @@
+<#include "sample_tabs.html" />
+<@tabs2 tab="project" />
+
+<@box>
+	<@boxHeader title='#i18n{module.plugin.sample.modify_project.title}' />
+	<@boxBody>
+		<@tform class='form-horizontal' action='jsp/site/Portal.jsp' >
+				<@messages errors=errors />
+				<@input type="hidden" id="id" name="id" value="${project.id}"/>
+				<@input type="hidden" value="${token}" name="token" />
+				<@input type="hidden" name="page" value="project" /> 
+
+				<@formGroup labelFor='title' labelKey='#i18n{module.plugin.sample.modify_project.labelTitle}' mandatory=true>
+					<@input type="text" id="title" name="title" value="${project.title!''}"  maxlength=50 tabIndex="1" />
+				</@formGroup>
+				<@formGroup labelFor='description' labelKey='#i18n{module.plugin.sample.modify_project.labelDescription}' mandatory=true>
+					<@input type="text" id="description" name="description" value="${project.description!''}"  maxlength=255 tabIndex="2" />
+				</@formGroup>
+				<@formGroup labelFor='range_of_publication_date' labelKey='#i18n{module.plugin.sample.modify_project.labelRangeOfPublicationDate}' mandatory=true>
+					<@input type="text" id="range_of_publication_date" name="range_of_publication_date" value="${project.rangeOfPublicationDate!''}"  tabIndex="3" />
+				</@formGroup>
+				<@formGroup labelFor='date' labelKey='#i18n{module.plugin.sample.modify_project.labelDate}' mandatory=true>
+					<@input type="text" id="date" name="date" value="${project.date!''}"  maxlength=255 tabIndex="4" />
+				</@formGroup>
+				<@formGroup labelFor='choice' labelKey='#i18n{module.plugin.sample.modify_project.labelChoice}' mandatory=true>
+					<@input type="text" id="choice" name="choice" value="${project.choice!''}"  maxlength=255 tabIndex="5" />
+				</@formGroup>
+
+				<@formGroup>
+         			<@button name='action_modifyProject' type='submit' tabIndex='5' title='#i18n{portal.util.labelModify}' buttonIcon='plus' />
+          			<@button name='view_manageProjects' type='submit' title='#i18n{portal.util.labelCancel}' buttonIcon='close' color='btn-secondary' cancel=true />
+				</@formGroup>
+		</@tform>
+	</@boxBody>
+</@box>
+

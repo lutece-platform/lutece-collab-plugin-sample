@@ -1,0 +1,31 @@
+<#include "managesample_tabs.html" />
+<@tabs2 tab="project" />
+<@box>
+	<@boxHeader title='#i18n{module.plugin.sample.create_project.title}' />
+	<@boxBody>
+    <@tform name='create_project' action='jsp/admin/plugins/plugin/modules/sample/ManageProjects.jsp' >
+
+        <@messages errors=errors />
+        <@input type="hidden" id="id" name="id"/>
+        <@input type="hidden" value="${token}" name="token" />
+
+		<@formGroup labelFor='title' labelKey='#i18n{module.plugin.sample.modify_project.labelTitle}' mandatory=true>
+			<@input type='text' id='title' name='title'  maxlength=50 value='${project.title!\'\'}' tabIndex='0' />
+		</@formGroup>
+		<@formGroup labelFor='description' labelKey='#i18n{module.plugin.sample.modify_project.labelDescription}' mandatory=true>
+			<@input type='text' id='description' name='description'  maxlength=255 value='${project.description!\'\'}' tabIndex='1' />
+		</@formGroup>
+		<@formGroup labelFor='range_of_publication_date' labelKey='#i18n{module.plugin.sample.modify_project.labelRangeOfPublicationDate}' mandatory=true>
+			<@input type='text' id='range_of_publication_date' name='range_of_publication_date'  value='${project.rangeOfPublicationDate!\'\'}' tabIndex='2' />
+		</@formGroup>
+		<@formGroup labelFor='date' labelKey='#i18n{module.plugin.sample.modify_project.labelDate}' mandatory=true>
+			<@input type='text' id='date' name='date'  maxlength=255 value='${project.date!\'\'}' tabIndex='3' />
+		</@formGroup>
+		<@formGroup labelFor='choice' labelKey='#i18n{module.plugin.sample.modify_project.labelChoice}' mandatory=true>
+			<@input type='text' id='choice' name='choice'  maxlength=255 value='${project.choice!\'\'}' tabIndex='4' />
+		</@formGroup>
+				
+		<@actionButtons button1Name="action_createProject" button2Name="view_manageProject"/>
+    </@tform>
+	</@boxBody>
+</@box>
